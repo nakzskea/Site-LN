@@ -16,10 +16,3 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-document.querySelectorAll('.grid-gip').forEach(grid => {
-  const imgs = [...grid.querySelectorAll('.card-img-only img')];
-  imgs.forEach((img, i) => {
-    img.parentElement.addEventListener('click', () => openLightbox(grid, i));
-  });
-});
