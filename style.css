@@ -34,7 +34,7 @@ nav {
 }
 .logo {
   font-family: 'Fredoka One', cursive;
-  font-size: 1.65rem; color: var(--coral); text-decoration: none;
+  font-size: 1.65rem; color: var(--teal); text-decoration: none;
 }
 .logo span { color: var(--teal); }
 
@@ -228,6 +228,7 @@ h2 {
   border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
   border: 4px solid var(--dark); box-shadow: 6px 6px 0 var(--dark);
   display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
   font-size: 5.5rem; position: sticky; top: 100px;
 }
 .apropos-text h2 { margin-bottom: 1.1rem; }
@@ -269,17 +270,17 @@ form { display: flex; flex-direction: column; gap: 1.2rem; }
 
 /* ══ CARTES IMAGE SEULE (portfolio) ══ */
 .card-img-only {
-  border: 3px solid var(--dark);
+  border: 3px solid var(--green);
   border-radius: var(--r);
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: var(--green);
   transition: transform .2s, box-shadow .2s;
   background: #fff;
   aspect-ratio: 4/3;
 }
 .card-img-only:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0 var(--dark);
+  box-shadow: 7px 7px 0 var(--green);
 }
 .card-img-only img {
   width: 100%;
