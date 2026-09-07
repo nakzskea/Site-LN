@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>studioFALC - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(26,26,46,.88);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+
+    #lb-img {
+      max-width: 88vw; max-height: 88vh;
+      border: 4px solid var(--dark); border-radius: var(--r);
+      box-shadow: 8px 8px 0 var(--dark);
+      object-fit: contain;
+      animation: lbIn .2s ease;
+    }
+    @keyframes lbIn {
+      from { opacity:0; transform:scale(.93); }
+      to   { opacity:1; transform:scale(1); }
+    }
+
+    .lb-btn {
+      position: absolute;
+      background: var(--cream); border: 3px solid var(--dark);
+      cursor: pointer; box-shadow: var(--shadow);
+      font-family: 'Nunito', sans-serif; font-weight: 800;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .lb-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--dark); }
+
+    #lb-close {
+      top: 1.2rem; right: 1.5rem;
+      border-radius: 50%; width: 44px; height: 44px;
+      font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #lb-prev { left: 1.5rem;  border-radius: 50px; padding: .5rem 1.1rem; font-size: 1.6rem; }
+    #lb-next { right: 1.5rem; border-radius: 50px; padding: .5rem 1.1rem; font-size: 1.6rem; }
+
+    #lb-counter {
+      position: absolute; bottom: 1.4rem;
+      background: var(--cream); border: 2px solid var(--dark);
+      border-radius: 50px; padding: .25rem .9rem;
+      font-weight: 800; font-size: .88rem;
+      box-shadow: 2px 2px 0 var(--dark);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">studio<span>FALC</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="apropos.html">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+  <div class="page-header">
+    <div class="s-tag" style="background:var(--green);">Portfolio</div>
+    <h1>Mes illustrations</h1>
+    <p>Un aperçu de mes projets FALC</p>
+  </div>
+
+  <section class="portfolio-section">
+
+    <h2 class="project-title">Projet GIP</h2>
+    <div class="grid-gip">
+      <div class="card-img-only reveal">
+        <img src="images/gip-1.jpg" alt="Illustration FALC projet GIP 1">
+      </div>
+      <div class="card-img-only reveal">
+        <img src="images/gip-2.jpg" alt="Illustration FALC projet GIP 2">
+      </div>
+      <div class="card-img-only reveal">
+        <img src="images/gip-3.png" alt="Illustration FALC projet GIP 3">
+      </div>
+    </div>
+
+    <!-- Duplique ce bloc pour chaque nouveau projet -->
+    <!--
+    <h2 class="project-title" style="margin-top:3rem;">Projet 2</h2>
+    <div class="grid-gip">
+      <div class="card-img-only reveal">
+        <img src="images/p2-1.jpg" alt="...">
+      </div>
+      <div class="card-img-only reveal">
+        <img src="images/p2-2.jpg" alt="...">
+      </div>
+    </div>
+    -->
+
+  </section>
+</main>
+
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox">
+  <button class="lb-btn" id="lb-close" aria-label="Fermer">✕</button>
+  <button class="lb-btn" id="lb-prev"  aria-label="Précédent">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-btn" id="lb-next"  aria-label="Suivant">›</button>
+  <div id="lb-counter"></div>
+</div>
+
+<footer>
+  <p>© 2026 studioFALC · <a href="mailto:tonemail@exemple.fr">tonemail@exemple.fr</a></p>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbPrev    = document.getElementById('lb-prev');
+  const lbNext    = document.getElementById('lb-next');
+
+  // Images du projet en cours (scope limité au grid cliqué)
+  let projectImages = [];
+  let current = 0;
+
+  function openLightbox(grid, index) {
+    // On récupère uniquement les images du grid parent
+    projectImages = [...grid.querySelectorAll('.card-img-only img')];
+    current = index;
+    updateLightbox();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Cacher les flèches s'il n'y a qu'une image
+    const alone = projectImages.length === 1;
+    lbPrev.style.display = alone ? 'none' : '';
+    lbNext.style.display = alone ? 'none' : '';
+  }
+
+  function updateLightbox() {
+    lbImg.style.animation = 'none';
+    lbImg.offsetHeight; // reflow pour relancer l'animation
+    lbImg.style.animation = '';
+    lbImg.src = projectImages[current].src;
+    lbImg.alt = projectImages[current].alt;
+    lbCounter.textContent = `${current + 1} / ${projectImages.length}`;
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navigate(dir) {
+    current = (current + dir + projectImages.length) % projectImages.length;
+    updateLightbox();
+  }
+
+  // Clic sur une carte — on passe le grid parent en contexte
+  document.querySelectorAll('.grid-gip').forEach(grid => {
+    const imgs = [...grid.querySelectorAll('.card-img-only img')];
+    imgs.forEach((img, i) => {
+      img.parentElement.addEventListener('click', () => openLightbox(grid, i));
+    });
+  });
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => navigate(-1));
+  lbNext.addEventListener('click', () => navigate(+1));
+
+  // Clic sur le fond pour fermer
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+  // Clavier
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  navigate(-1);
+    if (e.key === 'ArrowRight') navigate(+1);
+  });
+</script>
+</body>
+</html>

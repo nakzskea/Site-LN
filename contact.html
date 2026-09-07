@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>studioFALC - Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-layout {
+      max-width: 1000px; margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 4rem; align-items: start;
+    }
+    .contact-info h1 { margin-bottom: .7rem; }
+    .contact-info p  { font-size: 1.05rem; color: #444; line-height: 1.7; margin-bottom: 2rem; }
+    .info-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: #fff; border: 2.5px solid var(--dark);
+      border-radius: var(--r); padding: .9rem 1.1rem;
+      box-shadow: var(--shadow); margin-bottom: .8rem;
+      font-weight: 700; text-decoration: none; color: var(--dark);
+      transition: transform .18s, box-shadow .18s;
+    }
+    .info-item:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--dark); }
+    .info-item span:first-child { font-size: 1.5rem; }
+
+    .success-msg {
+      display: none; background: var(--teal);
+      border: 3px solid var(--dark); border-radius: var(--r);
+      padding: 1.2rem 1.5rem; margin-top: 1rem;
+      font-weight: 700; box-shadow: var(--shadow);
+    }
+    .error-msg {
+      display: none; background: #ffe0d0;
+      border: 3px solid var(--dark); border-radius: var(--r);
+      padding: 1.2rem 1.5rem; margin-top: 1rem;
+      font-weight: 700; box-shadow: var(--shadow);
+    }
+    @media (max-width: 768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">studio<span>FALC</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="apropos.html">À propos</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+  <div class="contact-layout">
+
+    <div class="contact-info reveal">
+      <div class="s-tag" style="background:var(--green); color:#fff;">Contact</div>
+      <h1>Travaillons<br>ensemble</h1>
+      <p>
+        Vous avez un projet FALC, une question ou simplement envie d'échanger ? Remplissez le formulaire ou contactez-moi directement.
+      </p>
+      <a href="mailto:tonemail@exemple.fr" class="info-item">
+        <span>✉️</span>
+        <span>tonemail@exemple.fr</span>
+      </a>
+    </div>
+
+    <div class="reveal">
+      <form id="contactForm">
+
+        <div class="form-row">
+          <div class="fgroup">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" placeholder="John" required>
+          </div>
+          <div class="fgroup">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" placeholder="Sucecouille" required>
+          </div>
+        </div>
+
+        <div class="fgroup">
+          <label for="org">Organisation (optionnel)</label>
+          <input type="text" id="org" name="organisation" placeholder="Association, hôpital, mairie…">
+        </div>
+
+        <div class="fgroup">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="John@exemple.fr" required>
+        </div>
+
+        <div class="fgroup">
+          <label for="sujet">Type de projet</label>
+          <select id="sujet" name="sujet">
+            <option value="">— Choisir —</option>
+            <option>Guide illustré FALC</option>
+            <option>Série d'illustrations thématiques</option>
+            <option>Atelier de co-création</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="fgroup">
+          <label for="message">Décrivez votre projet</label>
+          <textarea id="message" name="message" placeholder="Contexte, thématique, délai, volume estimé…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-green">Envoyer</button>
+
+        <div class="success-msg" id="successMsg">
+          Message envoyé !
+        </div>
+        <div class="error-msg" id="errorMsg">
+          Une erreur est survenue. Réessayez ou contactez-moi par email directement.
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 studioFALC · <a href="mailto:tonemail@exemple.fr">tonemail@exemple.fr</a></p>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('send.php', {
+        method: 'POST',
+        body: data
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.reset();
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('errorMsg').style.display = 'none';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      document.getElementById('errorMsg').style.display = 'block';
+      document.getElementById('successMsg').style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
