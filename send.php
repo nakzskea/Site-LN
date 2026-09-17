@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Récupération et nettoyage des champs
 function nettoyer($str) {
-    return htmlspecialchars(strip_tags(trim($str)), ENT_QUOTES, 'UTF-8');
+    return strip_tags(trim($str));
 }
 
 $prenom       = nettoyer($_POST['prenom']       ?? '');
@@ -32,7 +32,7 @@ if (empty($prenom) || empty($nom) || empty($message) || !filter_var($email, FILT
 }
 
 // Construction du mail
-$objet = "Nouveau contact studioFALC — $prenom $nom";
+$objet = "Nouveau contact pour un projet — $prenom $nom";
 
 $corps  = "Nouveau message reçu via le formulaire de contact.\n\n";
 $corps .= "────────────────────────\n";
