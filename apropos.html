@@ -2,17 +2,23 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <link rel="preload" href="fonts/Fredoka.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Nunito.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DMUM - À propos</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/Logo_noBG.png" type="image/png">
+  <meta property="og:image" content="https://dmum-falc.fr/images/Logo_BG.png">
+  <meta property="og:title" content="Dessine-moi un mouton - Hélène Languerand">
+  <meta property="og:description" content="Illustratrice spécialisée en visuels FALC">
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="logo">Dessine-moi un mouton</a>
+  <a href="index.html">
+    <img src="images/Logo_noBG.png" alt="Logo DMUM" style="height:85%; width:auto; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); display:block;">
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Accueil</a></li>
     <li><a href="portfolio.html">Portfolio FALC</a></li>
@@ -29,7 +35,7 @@
   <div class="page-header">
     <div class="s-tag" style="background:var(--green);">À propos</div>
     <h1 class="orange-name">Hélène Languerand</h1>
-    <h2 class="illustratrice-title">Illustratrice</h2>
+    <h2 class="illustratrice-title">Illustratrice et bien d'autres choses</h2>
   </div>
 
   <div class="apropos-wrap">
@@ -67,14 +73,16 @@
         <h2>Ce que je propose</h2>
         <div style="display:flex; flex-direction:column; gap:.8rem; margin-top:1rem;">
           <div style="display:flex; gap:1rem; align-items:center; background:#fff; border:2.5px solid var(--dark); border-radius:var(--r); padding:1rem; box-shadow:var(--shadow);">
-            <span style="font-size:2rem;">📖</span>
+            <!--<span style="font-size:2rem;">📖</span>-->
+            <img src="images/Fiches_Falc.png" alt="Fiche FALC" style="width:20%; height:20%; object-fit:cover;">
             <div>
               <strong>Guides illustrés</strong>
               <p style="font-size:.9rem; color:#555; margin-top:.2rem;">Brochures, livrets et fiches pratiques en version FALC.</p>
             </div>
           </div>
           <div style="display:flex; gap:1rem; align-items:center; background:#fff; border:2.5px solid var(--dark); border-radius:var(--r); padding:1rem; box-shadow:var(--shadow);">
-            <span style="font-size:2rem;">🖼️</span>
+            <!--<span style="font-size:2rem;">🖼️</span>-->
+            <img src="images/Mouton.png" alt="Mouton" style="width:20%; height:20%; object-fit:cover;">
             <div>
               <strong>Séries d'illustrations thématiques</strong>
               <p style="font-size:.9rem; color:#555; margin-top:.2rem;">Santé, droits, emploi, logement, citoyenneté…</p>
@@ -82,7 +90,7 @@
           </div>
           <div style="display:flex; gap:1rem; align-items:center; background:#fff; border:2.5px solid var(--dark); border-radius:var(--r); padding:1rem; box-shadow:var(--shadow);">
             <!--<span style="font-size:2rem;">🤝</span> -->
-            <img src="images/Hmm.png" alt="Hmm" style="width:10%; height:10%; object-fit:cover;">
+            <img src="images/Hmm.png" alt="Hmm" style="width:20%; height:20%; object-fit:cover;">
             <div>
               <strong>Autres demandes</strong>
               <p style="font-size:.9rem; color:#555; margin-top:.2rem;">Demande sur-mesure avec une touche de FALC.</p>
@@ -100,7 +108,7 @@
 </main>
 
 <footer>
-  <p>© 2026 Dessine-moi un mouton · <a href="mailto:tonemail@exemple.fr">tonemail@exemple.fr</a></p>
+  <p>© 2026 Dessine-moi un mouton · <a href="mailto:dmum.falc@gmail.com">dmum.falc@gmail.com</a></p>
 </footer>
 
 <script src="nav.js"></script>

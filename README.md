@@ -18,7 +18,7 @@ Portfolio en ligne d'**Hélène Languerand**, illustratrice spécialisée avec a
 
 - HTML / CSS / JavaScript vanilla - aucune dépendance, aucun framework
 - PHP (`send.php`) - envoi du formulaire de contact côté serveur, sans service tiers
-- Google Fonts - Fredoka One + Nunito
+- Google Fonts - Fredoka + Nunito dans le dossier fonts/
 
 ## Structure
 
@@ -32,6 +32,9 @@ Portfolio en ligne d'**Hélène Languerand**, illustratrice spécialisée avec a
 ├── style.css
 ├── nav.js
 ├── send.php
+├── fonts/
+    ├── Fredoka.woff2
+    └── Nunito.woff2
 └── images/
     ├── FALC/
         └── ...
@@ -49,5 +52,6 @@ Portfolio en ligne d'**Hélène Languerand**, illustratrice spécialisée avec a
 
 ## Déploiement
 
-A REALISER
+Site hébergé sur OVH directement, vercel ne gérant pas le PHP pour l'envoi de formulaire.  
+Accès au site → https://dmum-falc.fr
 

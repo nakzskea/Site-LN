@@ -2,12 +2,15 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <link rel="preload" href="fonts/Fredoka.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Nunito.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DMUM - Contact</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/Logo_noBG.png" type="image/png">
+  <meta property="og:image" content="https://dmum-falc.fr/images/Logo_BG.png">
+  <meta property="og:title" content="Dessine-moi un mouton - Hélène Languerand">
+  <meta property="og:description" content="Illustratrice spécialisée en visuels FALC">
   <style>
     .contact-layout {
       max-width: 1000px; margin: 0 auto;
@@ -49,6 +52,9 @@
 
 <nav>
   <a href="index.html" class="logo">Dessine-moi un mouton</a>
+  <a href="index.html">
+    <img src="images/Logo_noBG.png" alt="Logo DMUM" style="height:85%; width:auto; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); display:block;">
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Accueil</a></li>
     <li><a href="portfolio.html">Portfolio FALC</a></li>
@@ -66,13 +72,13 @@
 
     <div class="contact-info reveal">
       <div class="s-tag" style="background:var(--green);">Contact</div>
-      <h1>Travaillons<br>ensemble</h1>
+      <h1>Travaillons<br>ensemble !</h1>
       <p>
-        Vous avez un projet FALC, une question ou simplement envie d'échanger ? Remplissez le formulaire ou contactez-moi directement.
+        Vous avez un projet FALC, une question ou simplement envie d'échanger ? Remplissez le formulaire ou contactez-moi directement en cliquant sur la petite enveloppe.
       </p>
-      <a href="mailto:tonemail@exemple.fr" class="info-item">
-        <span>✉️</span>
-        <span>tonemail@exemple.fr</span>
+      <a href="mailto:dmum.falc@gmail.com" style="display:flex; align-items:center; justify-content:center; margin-top:-2rem">
+        <!--<span>✉️</span>-->
+        <img src="images/Lettre.png" alt="Lettre" style="width:60%; height:60%; object-fit:cover;">
       </a>
     </div>
 
@@ -82,11 +88,11 @@
         <div class="form-row">
           <div class="fgroup">
             <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" placeholder="John" required>
+            <input type="text" id="prenom" name="prenom" placeholder="Astronome" required>
           </div>
           <div class="fgroup">
             <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" placeholder="Sucecouille" required>
+            <input type="text" id="nom" name="nom" placeholder="Truc" required>
           </div>
         </div>
 
@@ -97,23 +103,23 @@
 
         <div class="fgroup">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="John@exemple.fr" required>
+          <input type="email" id="email" name="email" placeholder="Astronome@Truc.fr" required>
         </div>
 
         <div class="fgroup">
           <label for="sujet">Type de projet</label>
           <select id="sujet" name="sujet">
-            <option value="">— Choisir —</option>
+            <option value="">Choisir</option>
             <option>Guide illustré FALC</option>
             <option>Série d'illustrations thématiques</option>
-            <option>Atelier de co-création</option>
+            <option>Illustrations individuelles</option>
             <option>Autre</option>
           </select>
         </div>
 
         <div class="fgroup">
           <label for="message">Décrivez votre projet</label>
-          <textarea id="message" name="message" placeholder="Contexte, thématique, délai, volume estimé…" required></textarea>
+          <textarea id="message" name="message" placeholder="Contexte, thématique, délai, questions…" required></textarea>
         </div>
 
         <button type="submit" class="btn btn-green">Envoyer</button>
@@ -132,7 +138,7 @@
 </main>
 
 <footer>
-  <p>© 2026 Dessine-moi un mouton · <a href="mailto:tonemail@exemple.fr">tonemail@exemple.fr</a></p>
+  <p>© 2026 Dessine-moi un mouton · <a href="mailto:dmum.falc@gmail.com">dmum.falc@gmail.com</a></p>
 </footer>
 
 <script src="nav.js"></script>

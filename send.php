@@ -2,7 +2,7 @@
 // ══════════════════════════════════════════════
 //  ✏️  MODIFIE UNIQUEMENT CETTE LIGNE
 // ══════════════════════════════════════════════
-$destinataire = 'tonemail@exemple.fr';
+$destinataire = 'dmum.falc@gmail.com';
 // ══════════════════════════════════════════════
 
 header('Content-Type: application/json');
