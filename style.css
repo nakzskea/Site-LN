@@ -205,6 +205,10 @@ h2 {
 }
 @media (max-width: 768px) {
   .grid-gip { grid-template-columns: 1fr; }
+  .hero { margin-left: 0 !important; }
+
+  .logo { display: none; }
+  nav img { position: static !important; transform: none !important; height: 40px; width: auto; }
 }
 .card {
   border: 3px solid var(--dark); border-radius: var(--r);
