@@ -52,6 +52,7 @@ Portfolio en ligne d'**Hélène Languerand**, illustratrice spécialisée avec a
 
 ## Déploiement
 
-Site hébergé sur OVH directement, vercel ne gérant pas le PHP pour l'envoi de formulaire.  
+Site hébergé sur OVH directement, vercel ne gérant pas le PHP pour l'envoi de formulaire  
+Mise a jour du site à chaque commit grâce à GitHub Actions (.github/workflows/deploy.yml)  
 Accès au site → https://dmum-falc.fr
 
